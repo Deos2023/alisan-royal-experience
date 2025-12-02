@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Crown, MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
@@ -9,15 +10,11 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <Crown className="w-8 h-8 text-gold" />
-              <div>
-                <h3 className="text-xl font-display font-bold gold-gradient-text">
-                  Alisan Royal
-                </h3>
-                <p className="text-xs text-muted-foreground tracking-[0.2em] uppercase">
-                  Banquet
-                </p>
-              </div>
+              <img 
+                src={logo} 
+                alt="Alisan Royal Banquet Logo" 
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Creating unforgettable celebrations with elegance and grandeur since 2025.
