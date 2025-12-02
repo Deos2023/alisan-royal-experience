@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Crown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -37,15 +38,11 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <Crown className="w-8 h-8 text-gold group-hover:scale-110 transition-transform duration-300" />
-            <div>
-              <h1 className="text-xl lg:text-2xl font-display font-bold gold-gradient-text">
-                Alisan Royal
-              </h1>
-              <p className="text-xs text-muted-foreground tracking-[0.2em] uppercase">
-                Banquet
-              </p>
-            </div>
+            <img 
+              src={logo} 
+              alt="Alisan Royal Banquet Logo" 
+              className="h-14 w-auto group-hover:scale-105 transition-transform duration-300"
+            />
           </Link>
 
           {/* Desktop Navigation */}
