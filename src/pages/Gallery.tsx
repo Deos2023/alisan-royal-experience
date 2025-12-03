@@ -12,8 +12,9 @@ import venue5 from "@/assets/venue-5.jpeg";
 import venue6 from "@/assets/venue-6.jpeg";
 import venue7 from "@/assets/venue-7.jpeg";
 import venue8 from "@/assets/venue-8.jpeg";
+import video1 from "@/assets/video1.mp4"
 
-const categories = ["All", "Halls", "Garden", "Exterior"];
+const categories = ["All", "Halls", "Garden", "Exterior","Videos"];
 
 const galleryImages = [
   { src: venue4, alt: "Grand Banquet Hall Exterior", category: "Exterior" },
