@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
-import { X } from "lucide-react";
+import { X, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import venue1 from "@/assets/venue-1.jpeg";
 import venue2 from "@/assets/venue-2.jpeg";
@@ -12,28 +12,37 @@ import venue5 from "@/assets/venue-5.jpeg";
 import venue6 from "@/assets/venue-6.jpeg";
 import venue7 from "@/assets/venue-7.jpeg";
 import venue8 from "@/assets/venue-8.jpeg";
-import video1 from "@/assets/video1.mp4"
+import video1 from "@/assets/video1.mp4";
 
-const categories = ["All", "Halls", "Garden", "Exterior","Videos"];
+const categories = ["All", "Halls", "Garden", "Exterior", "Videos"];
 
-const galleryImages = [
-  { src: venue4, alt: "Grand Banquet Hall Exterior", category: "Exterior" },
-  { src: venue7, alt: "Main Hall with Chandeliers", category: "Halls" },
-  { src: venue5, alt: "Hall Interior View", category: "Halls" },
-  { src: venue6, alt: "Community Hall", category: "Halls" },
-  { src: venue2, alt: "Garden Fountain Pink", category: "Garden" },
-  { src: venue3, alt: "Garden Night View", category: "Garden" },
-  { src: venue1, alt: "Venue Overview Night", category: "Exterior" },
-  { src: venue8, alt: "Garden Fountain Blue", category: "Garden" },
+const galleryItems = [
+  { src: venue4, alt: "Grand Banquet Hall Exterior", category: "Exterior", type: "image" },
+  { src: venue7, alt: "Main Hall with Chandeliers", category: "Halls", type: "image" },
+  { src: venue5, alt: "Hall Interior View", category: "Halls", type: "image" },
+  { src: video1, alt: "Banquet Hall Tour", category: "Videos", type: "video" },
+  { src: venue6, alt: "Community Hall", category: "Halls", type: "image" },
+  { src: venue2, alt: "Garden Fountain Pink", category: "Garden", type: "image" },
+  { src: venue3, alt: "Garden Night View", category: "Garden", type: "image" },
+  { src: venue1, alt: "Venue Overview Night", category: "Exterior", type: "image" },
+  { src: venue8, alt: "Garden Fountain Blue", category: "Garden", type: "image" },
 ];
 
 const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedItem, setSelectedItem] = useState<{ src: string; type: 'image' | 'video' } | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const filteredImages = activeCategory === "All"
-    ? galleryImages
-    : galleryImages.filter((img) => img.category === activeCategory);
+  const filteredItems = activeCategory === "All" 
+    ? galleryItems 
+    : galleryItems.filter((item) => item.category === activeCategory);
+
+  const handleItemClick = (item: { src: string; type: 'image' | 'video' }) => {
+    setSelectedItem(item);
+    if (item.type === 'video' && videoRef.current) {
+      videoRef.current.currentTime = 0;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -78,22 +87,46 @@ const Gallery = () => {
 
           {/* Masonry Grid */}
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {filteredImages.map((image, index) => (
+            {filteredItems.map((item, index) => (
               <div
                 key={index}
                 className="break-inside-avoid relative overflow-hidden rounded-2xl group cursor-pointer gold-border"
-                onClick={() => setSelectedImage(image.src)}
+                onClick={() => handleItemClick({ src: item.src, type: item.type as 'image' | 'video' })}
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-                  <p className="text-foreground font-display text-lg">{image.alt}</p>
-                  <span className="text-gold text-sm">{image.category}</span>
-                </div>
+                {item.type === 'image' ? (
+                  <>
+                    <img
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                      <p className="text-foreground font-display text-lg">{item.alt}</p>
+                      <span className="text-gold text-sm">{item.category}</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="relative">
+                    <video
+                      src={item.src}
+                      muted
+                      loop
+                      playsInline
+                      className="w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-background/80 border-2 border-gold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Play className="w-8 h-8 text-gold ml-1" fill="currentColor" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                      <p className="text-foreground font-display text-lg">{item.alt}</p>
+                      <span className="text-gold text-sm">{item.category}</span>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -101,23 +134,43 @@ const Gallery = () => {
       </section>
 
       {/* Lightbox */}
-      {selectedImage && (
+      {selectedItem && (
         <div
           className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
+          onClick={() => setSelectedItem(null)}
         >
           <button
-            className="absolute top-6 right-6 w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center text-foreground hover:bg-gold hover:text-background transition-all"
-            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-6 w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center text-foreground hover:bg-gold hover:text-background transition-all z-10"
+            onClick={() => setSelectedItem(null)}
           >
             <X className="w-6 h-6" />
           </button>
-          <img
-            src={selectedImage}
-            alt="Gallery"
-            className="max-w-full max-h-[85vh] object-contain rounded-lg"
+          
+          <div 
+            className="max-w-full max-h-[85vh] w-auto relative"
             onClick={(e) => e.stopPropagation()}
-          />
+          >
+            {selectedItem.type === 'image' ? (
+              <img
+                src={selectedItem.src}
+                alt="Gallery"
+                className="max-w-full max-h-[85vh] object-contain rounded-lg"
+              />
+            ) : (
+              <div className="relative">
+                <video
+                  ref={videoRef}
+                  src={selectedItem.src}
+                  autoPlay
+                  controls
+                  className="max-w-full max-h-[85vh] rounded-lg"
+                />
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-background/80 text-foreground px-4 py-2 rounded-full text-sm">
+                  Click to play/pause • Esc to close
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
