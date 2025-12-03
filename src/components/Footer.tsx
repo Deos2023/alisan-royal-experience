@@ -104,7 +104,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gold/10 text-center">
           <p className="text-muted-foreground text-sm">
-            © 2025 Alisan Royal Banquet. All rights reserved.
+            © 2025 Alisan Royal Banquet. All rights reserved. Developed & Maintained By <span className="text-accent">Digital Exposure Online Services</span>
           </p>
         </div>
       </div>
