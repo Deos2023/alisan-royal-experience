@@ -38,15 +38,15 @@ const CTASection = () => {
           
           <div className="flex flex-col sm:flex-row gap-4">
             <Button variant="gold" size="xl" asChild>
-              <a href="https://wa.me/919062332969?text=Hello! I would like to book a venue at Alisan Royal Banquet." target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/916289438805?text=Hello! I would like to book a venue at Alisan Royal Banquet." target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5" />
                 Book on WhatsApp
               </a>
             </Button>
             <Button variant="glass" size="xl" asChild>
-              <a href="tel:9062332969">
+              <a href="tel:6289438805">
                 <Phone className="w-5 h-5" />
-                Call: 9062332969
+                Call: 6289438805
               </a>
             </Button>
           </div>
