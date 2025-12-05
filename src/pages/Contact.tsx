@@ -202,6 +202,10 @@ Message: ${formData.message || "No additional message"}`;
                       <a href="tel:6289438805" className="text-muted-foreground hover:text-gold transition-colors">
                         +91 6289438805
                       </a>
+                      <br />
+                      <a href="tel:7003178907" className="text-muted-foreground hover:text-gold transition-colors">
+                        +91 7003178907
+                      </a>
                     </div>
                   </div>
                   
