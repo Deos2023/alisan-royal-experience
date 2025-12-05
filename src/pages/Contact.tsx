@@ -63,7 +63,7 @@ Phone: ${formData.phone}
 Event Type: ${formData.eventType}
 Message: ${formData.message || "No additional message"}`;
 
-    const whatsappUrl = `https://wa.me/919062332969?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/916289438805?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, "_blank");
     
     toast({
@@ -199,8 +199,8 @@ Message: ${formData.message || "No additional message"}`;
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Phone</h4>
-                      <a href="tel:9062332969" className="text-muted-foreground hover:text-gold transition-colors">
-                        +91 9062332969
+                      <a href="tel:6289438805" className="text-muted-foreground hover:text-gold transition-colors">
+                        +91 6289438805
                       </a>
                     </div>
                   </div>
@@ -233,13 +233,13 @@ Message: ${formData.message || "No additional message"}`;
                 
                 <div className="flex gap-4 mt-8">
                   <Button variant="whatsapp" className="flex-1" asChild>
-                    <a href="https://wa.me/919062332969" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/916289438805" target="_blank" rel="noopener noreferrer">
                       <MessageCircle className="w-5 h-5" />
                       WhatsApp
                     </a>
                   </Button>
                   <Button variant="goldOutline" className="flex-1" asChild>
-                    <a href="tel:9062332969">
+                    <a href="tel:6289438805">
                       <Phone className="w-5 h-5" />
                       Call Now
                     </a>

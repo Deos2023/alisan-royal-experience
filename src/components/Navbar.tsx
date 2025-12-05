@@ -60,7 +60,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Button variant="gold" size="lg" asChild>
-              <a href="https://wa.me/919062332969" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/916289438805" target="_blank" rel="noopener noreferrer">
                 Book Now
               </a>
             </Button>
@@ -103,7 +103,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Button variant="gold" size="xl" className="mt-4" asChild>
-            <a href="https://wa.me/919062332969" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/916289438805" target="_blank" rel="noopener noreferrer">
               Book Now
             </a>
           </Button>

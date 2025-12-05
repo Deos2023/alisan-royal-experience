@@ -56,13 +56,13 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up" style={{ animationDelay: "0.8s" }}>
             <Button variant="gold" size="xl" asChild>
-              <a href="https://wa.me/919062332969?text=Hello! I would like to book a venue at Alisan Royal Banquet." target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/916289438805?text=Hello! I would like to book a venue at Alisan Royal Banquet." target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5" />
                 Book Now
               </a>
             </Button>
             <Button variant="goldOutline" size="xl" asChild>
-              <a href="tel:9062332969">
+              <a href="tel:6289438805">
                 <Phone className="w-5 h-5" />
                 Call Now
               </a>
