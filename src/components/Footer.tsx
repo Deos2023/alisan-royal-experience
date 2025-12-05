@@ -67,6 +67,15 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-gold" />
+                <a
+                  href="tel:7003178907"
+                  className="text-muted-foreground hover:text-gold transition-colors text-sm"
+                >
+                  +91 7003178907
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold" />
                 <a
                   href="mailto:info@alisanroyal.com"
