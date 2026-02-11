@@ -13,19 +13,31 @@ import venue6 from "@/assets/venue-6.jpeg";
 import venue7 from "@/assets/venue-7.jpeg";
 import venue8 from "@/assets/venue-8.jpeg";
 import video1 from "@/assets/video1.mp4";
+import video2 from "@/assets/WhatsApp Video 2026-02-10 at 18.35.25.mp4";
+import video3 from "@/assets/WhatsApp Video 2026-02-10 at 18.35.26.mp4";
+import video4 from "@/assets/WhatsApp Video 2026-02-10 at 18.35.27.mp4";
+import video5 from "@/assets/WhatsApp Video 2026-02-10 at 18.35.28.mp4";
+import video6 from "@/assets/WhatsApp Video 2026-02-10 at 18.35.30.mp4";
+import video7 from "@/assets/WhatsApp Video 2026-02-10 at 18.35.31.mp4";
 
 const categories = ["All", "Halls", "Garden", "Exterior", "Videos"];
 
 const galleryItems = [
   { src: venue4, alt: "Grand Banquet Hall Exterior", category: "Exterior", type: "image" },
   { src: venue7, alt: "Main Hall with Chandeliers", category: "Halls", type: "image" },
-  { src: venue5, alt: "Hall Interior View", category: "Halls", type: "image" },
-  { src: video1, alt: "Banquet Hall Tour", category: "Videos", type: "video" },
-  { src: venue6, alt: "Community Hall", category: "Halls", type: "image" },
-  { src: venue2, alt: "Garden Fountain Pink", category: "Garden", type: "image" },
-  { src: venue3, alt: "Garden Night View", category: "Garden", type: "image" },
-  { src: venue1, alt: "Venue Overview Night", category: "Exterior", type: "image" },
-  { src: venue8, alt: "Garden Fountain Blue", category: "Garden", type: "image" },
+  { src: video1, alt: "Banquet Hall Grand Tour", category: "Videos", type: "video" },
+  { src: venue5, alt: "Hall Interior Elegant View", category: "Halls", type: "image" },
+  { src: video2, alt: "Garden Fountain & Landscape", category: "Videos", type: "video" },
+  { src: venue6, alt: "Community Hall Interior", category: "Halls", type: "image" },
+  { src: venue2, alt: "Garden Fountain Pink Lighting", category: "Garden", type: "image" },
+  { src: video3, alt: "Evening Garden Ambiance", category: "Videos", type: "video" },
+  { src: venue3, alt: "Garden Night View with Lights", category: "Garden", type: "image" },
+  { src: video4, alt: "Main Entrance & Facade", category: "Videos", type: "video" },
+  { src: venue1, alt: "Venue Overview Night Lights", category: "Exterior", type: "image" },
+  { src: video5, alt: "Luxury Hall Interior Details", category: "Videos", type: "video" },
+  { src: venue8, alt: "Garden Fountain Blue Lighting", category: "Garden", type: "image" },
+  { src: video6, alt: "Outdoor Dining Area Tour", category: "Videos", type: "video" },
+  { src: video7, alt: "Event Setup & Decor Showcase", category: "Videos", type: "video" },
 ];
 
 const Gallery = () => {
@@ -44,8 +56,15 @@ const Gallery = () => {
     }
   };
 
+  // Handle keyboard events for lightbox
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape' && selectedItem) {
+      setSelectedItem(null);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" onKeyDown={handleKeyDown} tabIndex={-1}>
       <Navbar />
       
       {/* Hero Banner */}
@@ -98,7 +117,7 @@ const Gallery = () => {
                     <img
                       src={item.src}
                       alt={item.alt}
-                      className="w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
@@ -113,7 +132,7 @@ const Gallery = () => {
                       muted
                       loop
                       playsInline
-                      className="w-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -164,6 +183,7 @@ const Gallery = () => {
                   autoPlay
                   controls
                   className="max-w-full max-h-[85vh] rounded-lg"
+                  onKeyDown={(e) => e.stopPropagation()}
                 />
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-background/80 text-foreground px-4 py-2 rounded-full text-sm">
                   Click to play/pause • Esc to close
